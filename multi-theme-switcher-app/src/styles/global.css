@@ -1,0 +1,331 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+  background-color: var(--color-background, #ffffff);
+  color: var(--color-text, #1e293b);
+  line-height: 1.6;
+  transition: var(--transition, all 0.3s ease);
+  min-height: 100vh;
+}
+
+/* CSS Custom Properties - Default values (Theme 1) */
+:root {
+  /* Colors */
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-text: #1e293b;
+  --color-textSecondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-accent: #3b82f6;
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  --font-size-small: 0.875rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.25rem;
+  --font-size-xlarge: 2rem;
+
+  /* Spacing */
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.5rem;
+  --spacing-xlarge: 3rem;
+
+  /* Layout */
+  --layout-maxWidth: 1200px;
+  --layout-headerHeight: 64px;
+  --layout-sidebarWidth: 0px;
+  --layout-borderRadius: 8px;
+
+  /* Animations */
+  --transition: all 0.3s ease;
+  --duration: 300ms;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: var(--font-size-xlarge);
+}
+
+h2 {
+  font-size: var(--font-size-large);
+}
+
+h3 {
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: var(--spacing-medium);
+  color: var(--color-textSecondary);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-secondary);
+  border: none;
+  border-radius: var(--layout-borderRadius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+/* Form Elements */
+input, textarea, select {
+  font-family: var(--font-secondary);
+  border-radius: var(--layout-borderRadius);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--layout-maxWidth);
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Theme-specific body classes */
+body.theme-theme1 {
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-text: #1e293b;
+  --color-textSecondary: #64748b;
+  --color-border: #e2e8f0;
+  --color-accent: #3b82f6;
+}
+
+body.theme-theme2 {
+  --color-primary: #f59e0b;
+  --color-secondary: #d97706;
+  --color-background: #111827;
+  --color-surface: #1f2937;
+  --color-text: #f9fafb;
+  --color-textSecondary: #d1d5db;
+  --color-border: #374151;
+  --color-accent: #fbbf24;
+}
+
+body.theme-theme3 {
+  --color-primary: #ec4899;
+  --color-secondary: #8b5cf6;
+  --color-background: #fef3c7;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-textSecondary: #6b7280;
+  --color-border: #fbbf24;
+  --color-accent: #06d6a0;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Layout adjustments for sidebar theme */
+body.theme-theme2 {
+  --layout-sidebarWidth: 280px;
+}
+
+/* Enhanced animations for theme 3 */
+body.theme-theme3 * {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Selection colors */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: var(--color-textSecondary);
+  opacity: 0.7;
+}
+
+/* Enhanced scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--layout-headerHeight);
+}
+
+/* Loading states */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Theme transition improvements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Enhanced hover states */
+button:hover:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --font-size-xlarge: 1.75rem;
+    --font-size-large: 1.125rem;
+    --spacing-xlarge: 2rem;
+    --spacing-large: 1rem;
+    --layout-sidebarWidth: 0px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-small);
+  }
+  
+  /* Disable complex animations on mobile */
+  body.theme-theme3 * {
+    transition: all 0.3s ease;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-xlarge: 1.5rem;
+    --font-size-large: 1rem;
+    --spacing-xlarge: 1.5rem;
+    --layout-headerHeight: 56px;
+  }
+  
+  /* Further simplify animations on small screens */
+  * {
+    transition-duration: 200ms;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

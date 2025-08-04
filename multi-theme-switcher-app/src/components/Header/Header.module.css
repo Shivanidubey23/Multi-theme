@@ -1,0 +1,116 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--layout-headerHeight);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.container {
+  max-width: var(--layout-maxWidth);
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.logoLink {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.logoText {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-large);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.logoText:hover {
+  color: var(--color-accent);
+}
+
+.navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-large);
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  color: var(--color-textSecondary);
+  font-weight: 500;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: var(--layout-borderRadius);
+  transition: var(--transition);
+}
+
+.navLink:hover {
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+.navLinkActive {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+.themeDropdownContainer {
+  flex-shrink: 0;
+}
+
+/* Theme-specific styles */
+:global(.theme-theme2) .header {
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:global(.theme-theme3) .header {
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid var(--color-border);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-small);
+  }
+  
+  .navigation {
+    display: none;
+  }
+  
+  .logoText {
+    font-size: var(--font-size-medium);
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText {
+    font-size: var(--font-size-small);
+  }
+}
